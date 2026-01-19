@@ -1,5 +1,3 @@
-<center>
-
 # Advanced Calculator
 v1.0
 
@@ -8,7 +6,7 @@ v1.0
 
 ### **Developed by polsoft.ITS London | Sebastian Januchowski**
 
-A lightweight, feature-rich GUI calculator built with Python and Tkinter. This isn't just a basic arithmetic tool—it's a productivity utility designed for users who need to track, store, and export their calculations seamlessly.</center>
+A lightweight, feature-rich GUI calculator built with Python and Tkinter. This isn't just a basic arithmetic tool—it's a productivity utility designed for users who need to track, store, and export their calculations seamlessly.
 
 
 
