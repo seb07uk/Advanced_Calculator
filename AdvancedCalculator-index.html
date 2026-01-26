@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>polsoft.ITS | Advanced Calculator Professional</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #5dade2;
+            --light-blue: #d6eaf8;
+            --dark-blue: #2e86c1;
+            --bg-color: #f4f7f6;
+            --text-dark: #2c3e50;
+            --accent-orange: #f39c12;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Language Switcher Button */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border: 2px solid var(--dark-blue);
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--dark-blue);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .lang-switcher:hover {
+            background: var(--dark-blue);
+            color: white;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        .download-box {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-en { background: #fff; color: var(--dark-blue); }
+        .btn-pl { background: var(--accent-orange); color: white; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); opacity: 0.95; }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
+            padding: 60px 0;
+            align-items: start;
+        }
+
+        .app-preview {
+            position: sticky;
+            top: 20px;
+            text-align: center;
+        }
+
+        .screenshot-frame {
+            background: white;
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .screenshot-frame img {
+            width: 327px;
+            height: 662px;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .feature-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .option-card {
+            border: 1px solid #edf2f7;
+            padding: 20px;
+            border-radius: 10px;
+            background: #fcfdfe;
+            transition: border-color 0.3s;
+        }
+
+        .option-card:hover { border-color: var(--primary-blue); }
+        .option-card i { color: var(--primary-blue); margin-bottom: 10px; font-size: 1.5em; }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        .tech-table td { padding: 12px; border-bottom: 1px solid #f0f0f0; }
+        .tech-table td:first-child { font-weight: bold; color: var(--dark-blue); width: 30%; }
+
+        .kbd {
+            background: #333;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-family: monospace;
+            margin: 0 2px;
+        }
+
+        /* Utility classes for the new div */
+        .flex { display: flex; }
+        .justify-center { justify-content: center; }
+        .mt-20 { margin-top: 5rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+        .bg-white\/5 { background-color: rgba(255, 255, 255, 0.05); }
+        .p-4 { padding: 1rem; }
+        .rounded-2xl { border-radius: 1rem; }
+        .border { border-width: 1px; border-style: solid; }
+        .border-white\/10 { border-color: rgba(255, 255, 255, 0.1); }
+        .max-w-full { max-width: 100%; }
+        .h-auto { height: auto; }
+        .opacity-90 { opacity: 0.9; }
+
+        footer {
+            background: #2c3e50;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        @media (max-width: 850px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .app-preview { position: static; margin-bottom: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="lang-switcher" onclick="toggleLanguage()">
+    <i class="fas fa-globe"></i> <span id="langBtnText">PL</span>
+</button>
+
+<header>
+    <div style="background: rgba(255,255,255,0.2); display: inline-block; padding: 6px 18px; border-radius: 50px; margin-bottom: 20px; font-size: 0.9em;">
+        <i class="fas fa-rocket"></i> <span data-key="header-badge">Powered by polsoft.ITS London</span>
+    </div>
+    <h1 data-key="header-title">Advanced Calculator v1.0</h1>
+    <p data-key="header-subtitle">Precision, history, and professional data export in one tool.</p>
+    
+    <div class="download-box">
+        <a href="https://github.com/seb07uk/Advanced_Calculator/releases/download/calculator/Calculator.v1.0.exe" class="btn btn-en">
+            <i class="fas fa-download"></i> <span data-key="dl-en">Download .EXE (EN)</span>
+        </a>
+        <a href="https://github.com/seb07uk/Advanced_Calculator/releases/download/calculator/Kalkulator.v1.0.exe" class="btn btn-pl">
+            <i class="fas fa-download"></i> <span data-key="dl-pl">Pobierz .EXE (PL)</span>
+        </a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="main-layout">
+        <div class="app-preview">
+            <div class="screenshot-frame">
+                <img src="https://raw.githubusercontent.com/seb07uk/Advanced_Calculator/refs/heads/main/screenshot.png" alt="Calculator Interface">
+            </div>
+            <p style="color: #7f8c8d; font-size: 0.85em; margin-top: 15px;" data-key="screenshot-label">Real application preview</p>
+        </div>
+
+        <div class="feature-content">
+            <h2 data-key="main-feat-title">Powerful functions in a lightweight form</h2>
+            <p data-key="main-feat-desc">Advanced Calculator is not just about simple operations. It is a complete ecosystem for those who require documentation of their calculations.</p>
+
+            <div class="option-grid">
+                <div class="option-card">
+                    <i class="fas fa-history"></i>
+                    <h4 data-key="card1-title">Live History</h4>
+                    <p data-key="card1-desc">All actions go to an interactive list with the possibility of later loading.</p>
+                </div>
+                <div class="option-card">
+                    <i class="fas fa-memory"></i>
+                    <h4 data-key="card2-title">Ans Variable</h4>
+                    <p data-key="card2-desc">Use the previous result in new equations with one click of the Ans button.</p>
+                </div>
+                <div class="option-card">
+                    <i class="fas fa-file-export"></i>
+                    <h4 data-key="card3-title">Multi-Export</h4>
+                    <p data-key="card3-desc">Save sessions to <b>TXT</b> (report), <b>CSV</b> (Excel), and <b>JSON</b> (data) formats.</p>
+                </div>
+            </div>
+
+            <h3 data-key="tech-spec-title">Technical Specification</h3>
+            <table class="tech-table">
+                <tr>
+                    <td data-key="tech-engine">Engine:</td>
+                    <td>Python 3.x with Math library</td>
+                </tr>
+                <tr>
+                    <td data-key="tech-ui">Interface:</td>
+                    <td>Tkinter GUI (Light Blue Theme)</td>
+                </tr>
+                <tr>
+                    <td data-key="tech-keys">Shortcuts:</td>
+                    <td>
+                        <span class="kbd">Enter</span> <span data-key="key-calc">Calculate</span> | 
+                        <span class="kbd">C</span> <span data-key="key-clear">Clear</span> | 
+                        <span class="kbd">Backsp</span> <span data-key="key-del">Delete</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-key="tech-settings">Settings:</td>
+                    <td><code>%userprofile%\.polsoft\WinGet\settings.json</code></td>
+                </tr>
+                <tr>
+                    <td data-key="tech-storage">Storage:</td>
+                    <td><code>%userprofile%\.polsoft\psCLI\WGCF\</code></td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top: 30px;" data-key="about-title">About the author</h3>
+            <p data-key="about-desc">Project developed by <b>Sebastian Januchowski</b> as part of polsoft.ITS London, focusing on providing reliable office and engineering tools.</p>
+        </div>
+    </div>
+
+    <div class="flex justify-center mt-20 mb-10">
+        <div class="bg-white/5 p-4 rounded-2xl border border-white/10" style="background: rgba(0,0,0,0.03);">
+            <img src="https://raw.githubusercontent.com/seb07uk/WinGet.Deployer/refs/heads/main/compatible.png" 
+                 alt="Windows Compatibility" 
+                 class="max-w-full h-auto opacity-90">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>2025-2026© <b>polsoft.ITS London</b></p>
+        <div style="margin-top: 20px;">
+            <a href="https://github.com/seb07uk" style="color: white; margin: 0 15px; text-decoration: none;"><i class="fab fa-github fa-2x"></i></a>
+            <a href="https://chomikuj.pl/polsoft-its" style="color: white; margin: 0 15px; text-decoration: none;"><i class="fas fa-cloud-download-alt fa-2x"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const translations = {
+        'en': {
+            'langBtn': 'PL',
+            'header-badge': 'Powered by polsoft.ITS London',
+            'header-title': 'Advanced Calculator v1.0',
+            'header-subtitle': 'Precision, history, and professional data export in one tool.',
+            'dl-en': 'Download .EXE (EN)',
+            'dl-pl': 'Pobierz .EXE (PL)',
+            'screenshot-label': 'Real application preview',
+            'main-feat-title': 'Powerful functions in a lightweight form',
+            'main-feat-desc': 'Advanced Calculator is not just about simple operations. It is a complete ecosystem for those who require documentation of their calculations.',
+            'card1-title': 'Live History',
+            'card1-desc': 'All actions go to an interactive list with the possibility of later loading.',
+            'card2-title': 'Ans Variable',
+            'card2-desc': 'Use the previous result in new equations with one click of the Ans button.',
+            'card3-title': 'Multi-Export',
+            'card3-desc': 'Save sessions to TXT (report), CSV (Excel), and JSON (data) formats.',
+            'tech-spec-title': 'Technical Specification',
+            'tech-engine': 'Engine:',
+            'tech-ui': 'Interface:',
+            'tech-keys': 'Shortcuts:',
+            'tech-settings': 'Settings:',
+            'tech-storage': 'Storage:',
+            'key-calc': 'Calculate',
+            'key-clear': 'Clear',
+            'key-del': 'Delete',
+            'about-title': 'About the author',
+            'about-desc': 'Project developed by Sebastian Januchowski as part of polsoft.ITS London, focusing on providing reliable office and engineering tools.'
+        },
+        'pl': {
+            'langBtn': 'EN',
+            'header-badge': 'Dostarczane przez polsoft.ITS London',
+            'header-title': 'Zaawansowany Kalkulator v1.0',
+            'header-subtitle': 'Precyzja, historia i profesjonalny eksport danych w jednym narzędziu.',
+            'dl-en': 'Pobierz .EXE (EN)',
+            'dl-pl': 'Pobierz .EXE (PL)',
+            'screenshot-label': 'Rzeczywisty wygląd aplikacji',
+            'main-feat-title': 'Potężne funkcje w lekkiej formie',
+            'main-feat-desc': 'Advanced Calculator to nie tylko proste działania. To kompletny ekosystem dla osób wymagających dokumentacji swoich obliczeń.',
+            'card1-title': 'Historia na żywo',
+            'card1-desc': 'Wszystkie działania trafiają do interaktywnej listy z możliwością późniejszego wczytania.',
+            'card2-title': 'Zmienna Ans',
+            'card2-desc': 'Używaj poprzedniego wyniku w nowych równaniach jednym kliknięciem przycisku Ans.',
+            'card3-title': 'Multi-Eksport',
+            'card3-desc': 'Zapisuj sesje do formatów TXT (raport), CSV (Excel) oraz JSON (dane).',
+            'tech-spec-title': 'Specyfikacja Techniczna',
+            'tech-engine': 'Silnik:',
+            'tech-ui': 'Interfejs:',
+            'tech-keys': 'Skróty:',
+            'tech-settings': 'Ustawienia:',
+            'tech-storage': 'Magazyn:',
+            'key-calc': 'Oblicz',
+            'key-clear': 'Czyść',
+            'key-del': 'Usuń',
+            'about-title': 'O autorze',
+            'about-desc': 'Projekt rozwijany przez Sebastiana Januchowskiego w ramach polsoft.ITS London, skupiający się na dostarczaniu niezawodnych narzędzi biurowych i inżynierskich.'
+        }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'pl' : 'en';
+        document.documentElement.lang = currentLang;
+        document.getElementById('langBtnText').innerText = translations[currentLang]['langBtn'];
+        document.querySelectorAll('[data-key]').forEach(elem => {
+            const key = elem.getAttribute('data-key');
+            if (translations[currentLang][key]) {
+                elem.innerText = translations[currentLang][key];
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
