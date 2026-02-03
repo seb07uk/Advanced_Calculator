@@ -1,0 +1,63 @@
+Licencja MIT
+
+Copyright (c) 2026 Sebastian Januchowski - polsoft.ITS™
+
+Niniejszym udziela się bezpłatnego zezwolenia każdej osobie, która uzyska kopię
+tego oprogramowania i powiązanych plików dokumentacji (dalej "Oprogramowanie"),
+na korzystanie z Oprogramowania bez ograniczeń, włączając w to bez ograniczeń
+prawo do użytkowania, kopiowania, modyfikowania, łączenia, publikowania,
+rozpowszechniania, sublicencjonowania i/lub sprzedaży kopii Oprogramowania,
+oraz zezwolenia osobom, którym Oprogramowanie jest dostarczone, czynienia tego
+samego, z zastrzeżeniem następujących warunków:
+
+1. OBOWIĄZKOWA KLAUZULA ATRYBUCJI
+   Powyższa nota copyright oraz niniejsze zezwolenie muszą być zawarte we wszystkich
+   kopiach lub istotnych częściach Oprogramowania. Oryginalna atrybucja autora musi
+   pozostać nienaruszona i niezmodyfikowana we wszystkich pracach pochodnych,
+   dystrybucjach i publikacjach tego Oprogramowania.
+
+2. OCHRONA DANYCH AUTORA
+   Każda osoba lub podmiot, który modyfikuje, rozszerza lub tworzy prace pochodne
+   na podstawie tego Oprogramowania, jest ściśle zobowiązany do:
+   a) Nieusuwania, niezmieniania ani nieukrywania nazwiska oryginalnego autora,
+      noty copyright lub informacji o atrybucji
+   b) Nieprzedstawiania fałszywie autorstwa lub pochodzenia oryginalnego dzieła
+   c) Nierościenia sobie praw do oryginalnego autorstwa kodu, dokumentacji lub
+      komponentów stworzonych przez oryginalnego autora
+
+3. PODZIĘKOWANIA DLA WSPÓŁTWÓRCÓW DRUGOPLANOWYCH
+   Współtwórcy, którzy ulepszają, rozszerzają, debugują lub udoskonalają to
+   Oprogramowanie poprzez poprawki, ulepszenia, dodatki lub inne modyfikacje,
+   są mile widziani i zachęcani do współpracy. Tacy współtwórcy mogą dodać swoje
+   nazwiska do oddzielnego pliku CONTRIBUTORS lub sekcji, wyraźnie odróżniając
+   swoje wkłady od oryginalnej pracy. Współtwórcy drugoplanowi powinni być
+   wymienieni w następujący sposób:
+   
+   "Dodatkowe wkłady: [Imię i Nazwisko Współtwórcy] - [Krótki opis wkładu]"
+   
+   To podziękowanie powinno być umieszczone w dedykowanej sekcji oddzielnej od
+   oryginalnej atrybucji autora, utrzymując wyraźne rozróżnienie między oryginalnym
+   autorstwem a późniejszymi wkładami.
+
+4. WYTYCZNE DOTYCZĄCE WSPÓŁPRACY
+   Podczas współtworzenia tego Oprogramowania:
+   - Zachowaj oryginalną atrybucję autora w niezmienionej formie
+   - Dodaj szczegóły swojego wkładu w wyraźnie oddzielnej sekcji
+   - Używaj jasnego języka do rozróżnienia między oryginalną pracą a wkładami
+   - Szanuj prawa własności intelektualnej i prawa do uznania oryginalnego autora
+   - Dokumentuj swoje wkłady odpowiednio dla przejrzystości
+
+OPROGRAMOWANIE JEST DOSTARCZANE "TAKIM, JAKIE JEST", BEZ JAKIEJKOLWIEK GWARANCJI,
+WYRAŹNEJ LUB DOROZUMIANEJ, WŁĄCZAJĄC W TO MIĘDZY INNYMI GWARANCJE PRZYDATNOŚCI
+HANDLOWEJ, PRZYDATNOŚCI DO OKREŚLONEGO CELU I NIENARUSZANIA PRAW. W ŻADNYM
+WYPADKU AUTORZY LUB WŁAŚCICIELE PRAW AUTORSKICH NIE PONOSZĄ ODPOWIEDZIALNOŚCI
+Z TYTUŁU JAKICHKOLWIEK ROSZCZEŃ, SZKÓD LUB INNYCH ZOBOWIĄZAŃ, CZY TO W RAMACH
+UMOWY, CZYNU NIEDOZWOLONEGO, CZY W INNY SPOSÓB, WYNIKAJĄCYCH Z OPROGRAMOWANIA
+LUB KORZYSTANIA Z NIEGO, LUB INNYCH DZIAŁAŃ ZWIĄZANYCH Z OPROGRAMOWANIEM.
+
+UWAGA O NARUSZENIU:
+Jakiekolwiek naruszenie klauzuli ochrony atrybucji autora (Sekcja 2) może
+skutkować natychmiastowym wypowiedzeniem praw przyznanych na mocy niniejszej
+licencji dla strony naruszającej. Oryginalny autor zastrzega sobie prawo do
+podjęcia odpowiednich kroków prawnych w przypadku naruszenia wymogów dotyczących
+atrybucji.
